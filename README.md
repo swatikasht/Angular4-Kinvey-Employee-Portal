@@ -39,6 +39,3 @@ git push
 
 to check status
 git status
-
-to link repo in case of new project
-git remote add origin https://mayurjhanwar@bitbucket.org/mayurjhanwar/REMOTE_REPO_NAME.git
