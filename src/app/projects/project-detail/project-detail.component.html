@@ -1,0 +1,31 @@
+<div class="project-detail-container">
+    <h3> {{project.projectName}} Details </h3>
+    <div [hidden]="edit">
+    	<div class="row">
+	      <div class="col-xs-3">Project Name : </div>
+	      <div class="col-xs-9  pull-left">{{ project.projectName }}</div>
+	    </div>
+	    <div class="row">
+	      <div class="col-xs-3">Start Date : </div>
+	      <div class="col-xs-9 pull-left">{{ project.startDate }}</div>
+	    </div>
+	    <div class="row">
+	      <div class="col-xs-3">End Date:</div>
+	      <div class="col-xs-9 pull-left">{{ project.endDate}}</div>
+	    </div>
+	    <div class="row">
+	      <div class="col-xs-3">Location :</div>
+	      <div class="col-xs-9 pull-left">{{ project.location}}</div>
+	    </div>
+	    <div class="row">
+	      <div class="col-xs-3">Employee Count: </div>
+	      <div class="col-xs-9 pull-left">{{ project.empCount }}</div>
+	    </div>
+	       
+    	<br>
+    	
+    	<button class="btn btn-primary" (click)= "handleEdit()"> Edit </button>
+
+      </div>
+    <app-project-form [hidden]= "!edit" [project]="project" (onSubmit)="updateProject($event)"></app-project-form>
+</div>

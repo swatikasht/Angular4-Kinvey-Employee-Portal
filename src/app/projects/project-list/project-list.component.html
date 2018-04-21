@@ -1,0 +1,33 @@
+<div>
+	<h3> Projects List</h3>
+	
+	<div>
+		<label> Projects to End in </label>
+	      	<mat-form-field>
+			    <mat-select placeholder="Days" #leftDays>
+			     	<mat-option *ngFor= "let day of days" [value]= "day"> {{day}} Days </mat-option>
+			    </mat-select>
+			</mat-form-field>
+	</div>
+	<table class="table table-hover table-striped">
+	  <tr>
+	    <th>Project Name</th> 
+	    <th>End Date</th>
+	    <th>Employee Count</th>	
+	    <th> Delete </th>    
+	   
+	  </tr>
+	  <tr *ngFor = "let project of (projects | projectEndDate: leftDays.value)" [routerLink] = "['/project',project._id]">
+	   	<td> {{project.projectName}}</td>
+	  	<td> {{project.endDate}}</td>
+	  	<td> {{project.empCount}}</td>
+	  	<td class="btn glyphicon glyphicon-trash" (click)="handleDelete(project)"> </td>
+	  
+	  </tr>
+	</table>
+	<button class="btn btn-primary" routerLink = "/addProject" > Add Project </button>
+	
+</div>
+
+
+

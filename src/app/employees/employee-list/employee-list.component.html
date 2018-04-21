@@ -1,0 +1,49 @@
+<div>
+	<h3> Employees List</h3>
+	<div> Search Employee <input type="text" class="form-control form-group" #searchEmployee (keyup)="0"> </div>
+	<div> 
+		Filter Employee 
+		<div class="form-group">
+			<select class="form-control" #title (click)="0">
+				<option value="">Select Title</option>
+      			<option *ngFor= "let title of jobTitle" [value]= "title">
+      				{{title}}
+      			</option>
+			</select>
+	    </div>
+	</div>
+	<div> Sort Name By 
+		<div class="form-group">
+			<select class="form-control" #sort (click)="0">
+				<option value="">Sort By</option>
+      			<option value= "asc">  A to Z  </option>
+      			<option value= "desc"> Z to A </option>
+			</select>
+	    </div>
+	</div>
+	      			
+	<table class="table table-hover table-striped">
+	  <tr>
+	  	<th></th>
+	    <th>Name</th> 
+	    <th>Email</th>
+	    <th>Title</th>	
+	    <th> Delete </th>    
+	   
+	  </tr>
+	  <tr *ngFor = "let employee of employees | search : searchEmployee.value:'firstName,lastName' | filter : title.value | sortBy : sort.value : 'firstName' " >
+	  	<td> <input #employeeCheckbox type="checkbox" (click) = handleCheckBox(employee,employeeCheckbox.checked) name=""></td>
+	   	<td [routerLink] = "['/employee',employee._id]"> {{employee.firstName + ' ' + employee.lastName}}</td>
+	  	<td [routerLink] = "['/employee',employee._id]"> {{employee.email}}</td>
+	  	<td [routerLink] = "['/employee',employee._id]"> {{employee.title}}</td>
+	  	<td class="btn glyphicon glyphicon-trash" (click)="handleDelete(employee)"> </td>
+	  
+	  </tr>
+	</table>
+	<button class="btn btn-primary" routerLink = "/addemp" > Add Employee </button>
+	<button class="btn btn-primary" (click)= bulkDelete(selectedEmp)> Bulk Delete </button>
+	
+</div>
+
+
+
